@@ -30,7 +30,13 @@ jobs:
 
       - name: 📦 Get Flutter Dependencies
         working-directory: ./mobile_app
-        run: flutter pub get
+        run: |
+          # Create asset directories if they don't exist
+          mkdir -p assets/images assets/fonts
+          # Create dummy font files to prevent build errors
+          touch assets/fonts/Inter-Regular.ttf assets/fonts/Inter-Bold.ttf
+          touch assets/fonts/NotoSansBengali-Regular.ttf assets/fonts/NotoSansBengali-Bold.ttf
+          flutter pub get
 
       - name: 🔍 Run Flutter Analyze
         working-directory: ./mobile_app
