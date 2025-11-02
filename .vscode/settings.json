@@ -4,11 +4,24 @@
     "cSpell.customDictionaries": {
         "project-words": {
             "name": "project-words",
-            "path": "${workspaceRoot}/.vscode/cSpell.json",
+            "path": "${workspaceRoot}/cspell.json",
             "addWords": true,
             "scope": "workspace"
         }
     },
     "cSpell.diagnosticLevel": "Hint",
-    "cSpell.showStatus": false
+    "cSpell.showStatus": false,
+    "cSpell.words": [
+        "temurin",
+        "subosito",
+        "markettrack",
+        "apk",
+        "iphoneos",
+        "macos",
+        "ubuntu",
+        "codesign",
+        "appwrite",
+        "kawsar",
+        "hossain"
+    ]
 }
