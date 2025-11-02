@@ -1,6 +1,7 @@
-import 'dart:io';
+import 'dart:io' as io;
 import 'package:geolocator/geolocator.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:appwrite/appwrite.dart';
 import '../core/appwrite_config.dart';
 import '../core/user_folder_service.dart';
 
@@ -29,7 +30,7 @@ class AttendanceService {
       // 3. Upload selfie to user folder
       final uploadedFile = await _folderService.uploadFileToUserFolder(
         userId: userId,
-        file: File(selfie.path),
+        file: io.File(selfie.path),
         fileType: 'selfie',
       );
       

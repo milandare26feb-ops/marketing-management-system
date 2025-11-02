@@ -1,6 +1,6 @@
-import 'dart:io';
+import 'dart:io' as io;
 import 'package:appwrite/appwrite.dart';
-import 'package:appwrite/models.dart';
+import 'package:appwrite/models.dart' as models;
 import '../core/appwrite_config.dart';
 
 /// 📁 User-wise folder structure manager
@@ -42,9 +42,9 @@ class UserFolderService {
   }
   
   /// File upload করা user এর নিজস্ব folder এ
-  Future<File?> uploadFileToUserFolder({
+  Future<models.File?> uploadFileToUserFolder({
     required String userId,
-    required File file,
+    required io.File file,
     required String fileType, // 'selfie', 'report', 'photo', 'video', 'document'
   }) async {
     try {
@@ -57,7 +57,7 @@ class UserFolderService {
       
       final folderName = userDoc.data['folder_name'] ?? 'unknown';
       final timestamp = DateTime.now().millisecondsSinceEpoch;
-      final fileName = '$folderName/$fileType/${timestamp}_${file.path.split('/').last}';
+      final fileName = '$folderName/$fileType/${timestamp}_${io.Platform.pathSeparator}${file.path.split(io.Platform.pathSeparator).last}';
       
       // Appwrite Storage এ upload
       final uploadedFile = await _config.storage.createFile(
@@ -67,7 +67,7 @@ class UserFolderService {
       );
       
       print('✅ File uploaded: ${uploadedFile.name}');
-      return uploadedFile as File?;
+      return uploadedFile;
     } catch (e) {
       print('❌ Error uploading file: $e');
       return null;
@@ -75,7 +75,7 @@ class UserFolderService {
   }
   
   /// User এর সব files list করা
-  Future<List<File>> getUserFiles(String userId) async {
+  Future<List<models.File>> getUserFiles(String userId) async {
     try {
       final userDoc = await _config.databases.getDocument(
         databaseId: AppwriteConfig.databaseId,
