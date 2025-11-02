@@ -39,7 +39,7 @@ android {
 
     defaultConfig {
         applicationId = "com.confidencefeed.markettrack"
-        minSdk = flutter.minSdkVersion ?: 26
+        minSdk = 21  // Required for google_maps_flutter_android (was flutter.minSdkVersion ?: 26)
         targetSdk = flutter.targetSdkVersion ?: 34
         versionCode = flutterVersionCode.toInteger()
         versionName = flutterVersionName
