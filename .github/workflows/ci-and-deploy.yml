@@ -28,7 +28,13 @@ jobs:
           flutter-version: '3.19.0'
           channel: 'stable'
 
-      - name: 📦 Get Flutter Dependencies
+      - name: � Setup Mapbox Token
+        run: |
+          mkdir -p ~/.gradle
+          echo "MAPBOX_DOWNLOADS_TOKEN=sk.eyJ1IjoibWlsYW5kYXJlMjZmZWIiLCJhIjoiY21oaHFtMTFzMG03czJsczdiMmtuaXV4MiJ9.MnNIZR56khq3BCQB8pmlqw" >> ~/.gradle/gradle.properties
+          echo "✅ Mapbox token configured in global gradle.properties"
+
+      - name: �📦 Get Flutter Dependencies
         working-directory: ./mobile_app
         run: |
           # Create asset directories if they don't exist
@@ -50,12 +56,7 @@ jobs:
 
       - name: 🔨 Build APK (Release)
         working-directory: ./mobile_app
-        env:
-          MAPBOX_DOWNLOADS_TOKEN: sk.eyJ1IjoibWlsYW5kYXJlMjZmZWIiLCJhIjoiY21oaHFtMTFzMG03czJsczdiMmtuaXV4MiJ9.MnNIZR56khq3BCQB8pmlqw
-        run: |
-          # Write Mapbox token to gradle.properties for build
-          echo "MAPBOX_DOWNLOADS_TOKEN=$MAPBOX_DOWNLOADS_TOKEN" >> android/gradle.properties
-          flutter build apk --release --split-per-abi
+        run: flutter build apk --release --split-per-abi
 
       - name: 📤 Upload APK Artifact
         uses: actions/upload-artifact@v4
