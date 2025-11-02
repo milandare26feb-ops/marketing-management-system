@@ -28,17 +28,7 @@ jobs:
           flutter-version: '3.19.0'
           channel: 'stable'
 
-      - name: 🔑 Setup Mapbox Token
-        working-directory: ./mobile_app
-        run: |
-          # Add Mapbox token to local.properties
-          echo "MAPBOX_DOWNLOADS_TOKEN=sk.eyJ1IjoibWlsYW5kYXJlMjZmZWIiLCJhIjoiY21oaHFtMTFzMG03czJsczdiMmtuaXV4MiJ9.MnNIZR56khq3BCQB8pmlqw" >> android/local.properties
-          # Also add to global gradle.properties
-          mkdir -p ~/.gradle
-          echo "MAPBOX_DOWNLOADS_TOKEN=sk.eyJ1IjoibWlsYW5kYXJlMjZmZWIiLCJhIjoiY21oaHFtMTFzMG03czJsczdiMmtuaXV4MiJ9.MnNIZR56khq3BCQB8pmlqw" >> ~/.gradle/gradle.properties
-          echo "✅ Mapbox token configured"
-
-      - name: �📦 Get Flutter Dependencies
+      - name:  Get Flutter Dependencies
         working-directory: ./mobile_app
         run: |
           # Create asset directories if they don't exist

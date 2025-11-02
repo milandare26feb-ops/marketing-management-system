@@ -1,7 +1,7 @@
 class MapboxConfig {
-  // 🗺️ Mapbox Access Token (Secret Key)
+  // 🗺️ Mapbox Access Token (Public Token)
   static const String accessToken = 
-      'sk.eyJ1IjoibWlsYW5kYXJlMjZmZWIiLCJhIjoiY21oaHFtMTFzMG03czJsczdiMmtuaXV4MiJ9.MnNIZR56khq3BCQB8pmlqw';
+      'pk.eyJ1IjoibWlsYW5kYXJlMjZmZWIiLCJhIjoiY21oaDJ0dmN2MGljdjJqcXIybG00NnJ2YiJ9.VnulSTLoMuQBmo1VgjCQeQ';
   
   // 🎨 Map Style URLs
   static const String styleStreets = 'mapbox://styles/mapbox/streets-v12';
