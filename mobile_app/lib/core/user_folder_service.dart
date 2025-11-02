@@ -57,7 +57,8 @@ class UserFolderService {
       
       final folderName = userDoc.data['folder_name'] ?? 'unknown';
       final timestamp = DateTime.now().millisecondsSinceEpoch;
-      final fileName = '$folderName/$fileType/${timestamp}_${io.Platform.pathSeparator}${file.path.split(io.Platform.pathSeparator).last}';
+      final fileBaseName = file.path.split(io.Platform.pathSeparator).last;
+      final fileName = '$folderName/$fileType/${timestamp}_$fileBaseName';
       
       // Appwrite Storage এ upload
       final uploadedFile = await _config.storage.createFile(
