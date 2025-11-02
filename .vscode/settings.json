@@ -1,3 +1,14 @@
 {
-    "java.configuration.updateBuildConfiguration": "interactive"
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "cSpell.enabled": true,
+    "cSpell.customDictionaries": {
+        "project-words": {
+            "name": "project-words",
+            "path": "${workspaceRoot}/.vscode/cSpell.json",
+            "addWords": true,
+            "scope": "workspace"
+        }
+    },
+    "cSpell.diagnosticLevel": "Hint",
+    "cSpell.showStatus": false
 }
