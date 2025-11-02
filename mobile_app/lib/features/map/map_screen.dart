@@ -10,7 +10,7 @@ class MapScreen extends StatefulWidget {
 }
 
 class _MapScreenState extends State<MapScreen> {
-  final GlobalKey<_MapboxMapViewState> _mapKey = GlobalKey();
+  final GlobalKey<MapboxMapViewState> _mapKey = GlobalKey();
   Position? _currentPosition;
   bool _isLoading = false;
 

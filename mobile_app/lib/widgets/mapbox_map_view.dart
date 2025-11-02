@@ -20,10 +20,10 @@ class MapboxMapView extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<MapboxMapView> createState() => _MapboxMapViewState();
+  State<MapboxMapView> createState() => MapboxMapViewState();
 }
 
-class _MapboxMapViewState extends State<MapboxMapView> {
+class MapboxMapViewState extends State<MapboxMapView> {
   final MapController _mapController = MapController();
   final List<Marker> _markers = [];
 
