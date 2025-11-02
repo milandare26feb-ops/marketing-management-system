@@ -50,7 +50,12 @@ jobs:
 
       - name: 🔨 Build APK (Release)
         working-directory: ./mobile_app
-        run: flutter build apk --release --split-per-abi
+        env:
+          MAPBOX_DOWNLOADS_TOKEN: sk.eyJ1IjoibWlsYW5kYXJlMjZmZWIiLCJhIjoiY21oaHFtMTFzMG03czJsczdiMmtuaXV4MiJ9.MnNIZR56khq3BCQB8pmlqw
+        run: |
+          # Write Mapbox token to gradle.properties for build
+          echo "MAPBOX_DOWNLOADS_TOKEN=$MAPBOX_DOWNLOADS_TOKEN" >> android/gradle.properties
+          flutter build apk --release --split-per-abi
 
       - name: 📤 Upload APK Artifact
         uses: actions/upload-artifact@v4
