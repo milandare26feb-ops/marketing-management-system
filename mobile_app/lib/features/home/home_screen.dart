@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../core/auth_service.dart';
 import '../../core/attendance_service.dart';
 import '../auth/login_screen.dart';
+import '../map/map_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -258,7 +259,13 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             _buildDrawerItem(Icons.home, 'হোম', () => Navigator.pop(context)),
-            _buildDrawerItem(Icons.map, 'ম্যাপ ভিউ', () {}),
+            _buildDrawerItem(Icons.map, 'ম্যাপ ভিউ', () {
+              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => MapScreen()),
+              );
+            }),
             _buildDrawerItem(Icons.report, 'রিপোর্ট', () {}),
             _buildDrawerItem(Icons.language, 'ভাষা পরিবর্তন', () {}),
             _buildDrawerItem(Icons.settings, 'সেটিংস', () {}),
