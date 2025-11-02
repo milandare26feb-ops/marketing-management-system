@@ -1,0 +1,15 @@
+# Batch Scripts (temp files)
+*.bat
+
+# Git Setup Guides
+GIT_SETUP_GUIDE.md
+
+# VS Code Settings (optional)
+.vscode/
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

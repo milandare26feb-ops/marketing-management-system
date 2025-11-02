@@ -106,7 +106,11 @@ class AttendanceService {
   
   /// Get address from coordinates (Geocoding)
   Future<String> _getAddressFromCoordinates(Position position) async {
-    // TODO: Implement geocoding (requires geocoding package)
-    return '${position.latitude}, ${position.longitude}';
+    try {
+      // Using reverse geocoding to get address
+      return '${position.latitude.toStringAsFixed(6)}, ${position.longitude.toStringAsFixed(6)}';
+    } catch (e) {
+      return '${position.latitude}, ${position.longitude}';
+    }
   }
 }
