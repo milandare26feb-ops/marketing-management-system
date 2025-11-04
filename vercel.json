@@ -1,0 +1,8 @@
+{
+  "buildCommand": "cd admin-web && npm run build",
+  "outputDirectory": "admin-web/out",
+  "installCommand": "cd admin-web && npm install",
+  "devCommand": "cd admin-web && npm run dev",
+  "framework": "nextjs",
+  "regions": ["sin1"]
+}
