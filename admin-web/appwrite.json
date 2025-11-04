@@ -1,0 +1,69 @@
+{
+  "projectId": "690911f10028fa64956b",
+  "projectName": "MarketTrack",
+  "settings": {
+    "services": {
+      "account": true,
+      "avatars": true,
+      "databases": true,
+      "locale": true,
+      "health": true,
+      "storage": true,
+      "teams": true,
+      "users": true,
+      "functions": true,
+      "graphql": true,
+      "messaging": true
+    }
+  },
+  "databases": [
+    {
+      "$id": "markettrack_db",
+      "name": "MarketTrack Database"
+    }
+  ],
+  "collections": [
+    {
+      "databaseId": "markettrack_db",
+      "$id": "users",
+      "name": "Users"
+    },
+    {
+      "databaseId": "markettrack_db",
+      "$id": "visits",
+      "name": "Visits"
+    },
+    {
+      "databaseId": "markettrack_db",
+      "$id": "campaigns",
+      "name": "Campaigns"
+    },
+    {
+      "databaseId": "markettrack_db",
+      "$id": "reports",
+      "name": "Reports"
+    }
+  ],
+  "buckets": [
+    {
+      "$id": "visit_photos",
+      "name": "Visit Photos"
+    },
+    {
+      "$id": "shop_photos",
+      "name": "Shop Photos"
+    },
+    {
+      "$id": "campaign_materials",
+      "name": "Campaign Materials"
+    },
+    {
+      "$id": "report_files",
+      "name": "Report Files"
+    },
+    {
+      "$id": "profile_pictures",
+      "name": "Profile Pictures"
+    }
+  ]
+}
