@@ -1,0 +1,327 @@
+{
+  "projectId": "690911f10028fa64956b",
+  "projectName": "MarketTrack",
+  "functions": [],
+  "databases": [
+    {
+      "name": "MarketTrack Database",
+      "$id": "markettrack_db",
+      "enabled": true
+    }
+  ],
+  "collections": [
+    {
+      "databaseId": "markettrack_db",
+      "$id": "users",
+      "name": "Users",
+      "enabled": true,
+      "documentSecurity": false,
+      "attributes": [
+        {
+          "key": "name",
+          "type": "string",
+          "size": 255,
+          "required": true
+        },
+        {
+          "key": "email",
+          "type": "email",
+          "required": true
+        },
+        {
+          "key": "phone",
+          "type": "string",
+          "size": 20,
+          "required": true
+        },
+        {
+          "key": "address",
+          "type": "string",
+          "size": 500,
+          "required": false
+        },
+        {
+          "key": "home_latitude",
+          "type": "double",
+          "required": false
+        },
+        {
+          "key": "home_longitude",
+          "type": "double",
+          "required": false
+        },
+        {
+          "key": "home_set_at",
+          "type": "datetime",
+          "required": false
+        },
+        {
+          "key": "nid_url",
+          "type": "string",
+          "size": 500,
+          "required": false
+        },
+        {
+          "key": "approval_status",
+          "type": "enum",
+          "elements": ["pending", "approved", "rejected"],
+          "required": false,
+          "default": "pending"
+        },
+        {
+          "key": "fcm_token",
+          "type": "string",
+          "size": 500,
+          "required": false
+        },
+        {
+          "key": "last_seen",
+          "type": "datetime",
+          "required": false
+        },
+        {
+          "key": "device_active",
+          "type": "boolean",
+          "required": false,
+          "default": true
+        }
+      ],
+      "indexes": [
+        {
+          "key": "email_idx",
+          "type": "unique",
+          "attributes": ["email"]
+        },
+        {
+          "key": "approval_idx",
+          "type": "key",
+          "attributes": ["approval_status"]
+        }
+      ]
+    },
+    {
+      "databaseId": "markettrack_db",
+      "$id": "device_monitoring",
+      "name": "Device Monitoring",
+      "enabled": true,
+      "documentSecurity": false,
+      "attributes": [
+        {
+          "key": "user_id",
+          "type": "string",
+          "size": 255,
+          "required": true
+        },
+        {
+          "key": "timestamp",
+          "type": "datetime",
+          "required": true
+        },
+        {
+          "key": "battery_level",
+          "type": "integer",
+          "required": false
+        },
+        {
+          "key": "battery_state",
+          "type": "string",
+          "size": 50,
+          "required": false
+        },
+        {
+          "key": "gps_enabled",
+          "type": "boolean",
+          "required": true
+        },
+        {
+          "key": "latitude",
+          "type": "double",
+          "required": false
+        },
+        {
+          "key": "longitude",
+          "type": "double",
+          "required": false
+        },
+        {
+          "key": "network_type",
+          "type": "string",
+          "size": 50,
+          "required": false
+        },
+        {
+          "key": "is_vpn",
+          "type": "boolean",
+          "required": false
+        },
+        {
+          "key": "device_platform",
+          "type": "string",
+          "size": 50,
+          "required": false
+        }
+      ],
+      "indexes": [
+        {
+          "key": "user_timestamp_idx",
+          "type": "key",
+          "attributes": ["user_id", "timestamp"]
+        }
+      ]
+    },
+    {
+      "databaseId": "markettrack_db",
+      "$id": "monitoring_alerts",
+      "name": "Monitoring Alerts",
+      "enabled": true,
+      "documentSecurity": false,
+      "attributes": [
+        {
+          "key": "user_id",
+          "type": "string",
+          "size": 255,
+          "required": true
+        },
+        {
+          "key": "alert_type",
+          "type": "string",
+          "size": 100,
+          "required": true
+        },
+        {
+          "key": "message",
+          "type": "string",
+          "size": 1000,
+          "required": true
+        },
+        {
+          "key": "severity",
+          "type": "enum",
+          "elements": ["low", "medium", "high", "critical"],
+          "required": true
+        },
+        {
+          "key": "timestamp",
+          "type": "datetime",
+          "required": true
+        },
+        {
+          "key": "is_resolved",
+          "type": "boolean",
+          "required": false,
+          "default": false
+        }
+      ],
+      "indexes": [
+        {
+          "key": "severity_idx",
+          "type": "key",
+          "attributes": ["severity", "timestamp"]
+        }
+      ]
+    },
+    {
+      "databaseId": "markettrack_db",
+      "$id": "notifications",
+      "name": "Notifications",
+      "enabled": true,
+      "documentSecurity": false,
+      "attributes": [
+        {
+          "key": "user_id",
+          "type": "string",
+          "size": 255,
+          "required": true
+        },
+        {
+          "key": "title",
+          "type": "string",
+          "size": 255,
+          "required": true
+        },
+        {
+          "key": "message",
+          "type": "string",
+          "size": 1000,
+          "required": true
+        },
+        {
+          "key": "type",
+          "type": "string",
+          "size": 50,
+          "required": false
+        },
+        {
+          "key": "is_read",
+          "type": "boolean",
+          "required": false,
+          "default": false
+        },
+        {
+          "key": "created_at",
+          "type": "datetime",
+          "required": true
+        }
+      ],
+      "indexes": [
+        {
+          "key": "user_notifications_idx",
+          "type": "key",
+          "attributes": ["user_id", "created_at"]
+        }
+      ]
+    }
+  ],
+  "buckets": [
+    {
+      "$id": "nid_cards",
+      "name": "NID Cards",
+      "enabled": true,
+      "maximumFileSize": 104857600,
+      "allowedFileExtensions": ["jpg", "jpeg", "png", "pdf"],
+      "compression": "gzip",
+      "encryption": true,
+      "antivirus": true
+    },
+    {
+      "$id": "profile_videos",
+      "name": "Profile Videos",
+      "enabled": true,
+      "maximumFileSize": 104857600,
+      "allowedFileExtensions": ["jpg", "jpeg", "png", "mp4"],
+      "compression": "gzip",
+      "encryption": true,
+      "antivirus": true
+    },
+    {
+      "$id": "check_in_selfies",
+      "name": "Check-in Selfies",
+      "enabled": true,
+      "maximumFileSize": 10485760,
+      "allowedFileExtensions": ["jpg", "jpeg", "png"],
+      "compression": "gzip",
+      "encryption": true,
+      "antivirus": true
+    },
+    {
+      "$id": "reports",
+      "name": "Reports",
+      "enabled": true,
+      "maximumFileSize": 52428800,
+      "allowedFileExtensions": ["pdf", "jpg", "jpeg", "png"],
+      "compression": "gzip",
+      "encryption": true,
+      "antivirus": true
+    },
+    {
+      "$id": "audio_notes",
+      "name": "Audio Notes",
+      "enabled": true,
+      "maximumFileSize": 52428800,
+      "allowedFileExtensions": ["mp3", "wav", "m4a"],
+      "compression": "gzip",
+      "encryption": true,
+      "antivirus": true
+    }
+  ]
+}

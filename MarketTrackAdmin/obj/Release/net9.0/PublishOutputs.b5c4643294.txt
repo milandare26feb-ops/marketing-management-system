@@ -1,0 +1,9 @@
+D:\MARKET_MANAGEMENT\deploy\admin\MarketTrackAdmin.exe
+D:\MARKET_MANAGEMENT\deploy\admin\appsettings.json
+D:\MARKET_MANAGEMENT\deploy\admin\MarketTrackAdmin.dll
+D:\MARKET_MANAGEMENT\deploy\admin\MarketTrackAdmin.deps.json
+D:\MARKET_MANAGEMENT\deploy\admin\MarketTrackAdmin.runtimeconfig.json
+D:\MARKET_MANAGEMENT\deploy\admin\MarketTrackAdmin.pdb
+D:\MARKET_MANAGEMENT\deploy\admin\Appwrite.dll
+D:\MARKET_MANAGEMENT\deploy\admin\Newtonsoft.Json.dll
+D:\MARKET_MANAGEMENT\deploy\admin\System.Security.Permissions.dll
