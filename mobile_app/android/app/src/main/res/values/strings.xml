@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MarketTrack</string>
+    <string name="google_maps_key">AIzaSyDummy_Key_Replace_With_Your_Actual_Key</string>
+</resources>
