@@ -74,16 +74,3 @@ flutter:
   
   assets:
     - assets/images/
-    - assets/fonts/
-  
-  fonts:
-    - family: Inter
-      fonts:
-        - asset: assets/fonts/Inter-Regular.ttf
-        - asset: assets/fonts/Inter-Bold.ttf
-          weight: 700
-    - family: NotoSansBengali
-      fonts:
-        - asset: assets/fonts/NotoSansBengali-Regular.ttf
-        - asset: assets/fonts/NotoSansBengali-Bold.ttf
-          weight: 700
