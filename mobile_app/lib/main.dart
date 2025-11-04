@@ -31,9 +31,7 @@ class MarketTrackApp extends StatelessWidget {
             primary: Color(0xFF2E5BFF),
             secondary: Color(0xFF00C2A8),
             tertiary: Color(0xFFFF8A00),
-            background: Color(0xFF0B1020),
             surface: Color(0xFF121A33),
-            onBackground: Color(0xFFE5E7EB),
             onSurface: Color(0xFFE5E7EB),
           ),
           fontFamily: 'Inter',
@@ -47,7 +45,7 @@ class MarketTrackApp extends StatelessWidget {
             selectedItemColor: Color(0xFF2E5BFF),
             unselectedItemColor: Color(0xFF7A8189),
           ),
-          cardTheme: CardTheme(
+          cardTheme: CardThemeData(
             color: Color(0xFF121A33),
             elevation: 0,
             shape: RoundedRectangleBorder(

@@ -3,6 +3,10 @@ import '../../core/auth_service.dart';
 import '../../core/attendance_service.dart';
 import '../auth/login_screen.dart';
 import '../map/map_screen.dart';
+import '../../services/device_monitoring_service.dart';
+import '../../services/app_uninstall_detection_service.dart';
+import '../../services/home_location_service.dart';
+import '../../services/permission_lock_service.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -15,7 +19,84 @@ class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
   final _authService = AuthService();
   final _attendanceService = AttendanceService();
+  final _monitoringService = DeviceMonitoringService();
+  final _uninstallService = AppUninstallDetectionService();
+  final _homeLocationService = HomeLocationService();
+  final _permissionService = PermissionLockService();
   bool _isCheckedIn = false;
+  String? _userId;
+
+  @override
+  void initState() {
+    super.initState();
+    _initializeServices();
+  }
+
+  Future<void> _initializeServices() async {
+    final user = await _authService.getCurrentUser();
+    if (user != null) {
+      _userId = user.$id;
+      
+      // Initialize monitoring services
+      _monitoringService.initialize(user.$id);
+      _monitoringService.startMonitoring(intervalMinutes: 5);
+      
+      _uninstallService.initialize(user.$id);
+      await _uninstallService.setupTracking();
+      
+      // Check permissions
+      _checkPermissions();
+      
+      // Initialize home location tracking
+      await _homeLocationService.initializeBackgroundTracking();
+    }
+  }
+
+  Future<void> _checkPermissions() async {
+    try {
+      await PermissionViolationHandler().checkAndEnforce();
+    } catch (e) {
+      if (e is PermissionViolationException) {
+        _showPermissionDialog(e);
+      }
+    }
+  }
+
+  void _showPermissionDialog(PermissionViolationException exception) {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => AlertDialog(
+        title: Text('⚠️ অনুমতি প্রয়োজন'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(exception.message),
+            SizedBox(height: 12),
+            Text('নিষ্ক্রিয় অনুমতি:', style: TextStyle(fontWeight: FontWeight.bold)),
+            ...exception.missingPermissions.map((p) => Text('• $p')),
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () {
+              _permissionService.openAppSettings();
+              Navigator.pop(context);
+            },
+            child: Text('সেটিংস খুলুন'),
+          ),
+        ],
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    _monitoringService.dispose();
+    _uninstallService.dispose();
+    super.dispose();
+  }
 
   final List<Widget> _screens = [
     DashboardTab(),

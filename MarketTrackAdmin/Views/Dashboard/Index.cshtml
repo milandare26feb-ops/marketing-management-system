@@ -1,0 +1,74 @@
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="container-fluid mt-4">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="mb-4">📊 ড্যাশবোর্ড</h2>
+        </div>
+    </div>
+
+    <!-- Statistics Cards -->
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <div class="card p-4">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="text-muted mb-2">অনুমোদনের অপেক্ষায়</h6>
+                        <h2 class="mb-0">@ViewBag.PendingCount</h2>
+                    </div>
+                    <div class="fs-1">⏳</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card p-4">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="text-muted mb-2">অনুমোদিত ইউজার</h6>
+                        <h2 class="mb-0">@ViewBag.ApprovedCount</h2>
+                    </div>
+                    <div class="fs-1">✅</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card p-4">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="text-muted mb-2">সক্রিয় সতর্কতা</h6>
+                        <h2 class="mb-0">@ViewBag.AlertCount</h2>
+                    </div>
+                    <div class="fs-1">🚨</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card p-4 mb-4">
+                <h5 class="mb-3">⚡ দ্রুত অ্যাকশন</h5>
+                <div class="d-grid gap-2">
+                    <a href="@Url.Action("Pending", "Users")" class="btn btn-primary">
+                        👥 অনুমোদনের অপেক্ষায় (@ViewBag.PendingCount)
+                    </a>
+                    <a href="@Url.Action("Monitoring", "Dashboard")" class="btn btn-outline-light">
+                        📊 রিয়েল-টাইম মনিটরিং
+                    </a>
+                    <a href="@Url.Action("Alerts", "Dashboard")" class="btn btn-outline-warning">
+                        🚨 সতর্কতা দেখুন (@ViewBag.AlertCount)
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card p-4 mb-4">
+                <h5 class="mb-3">📈 সাম্প্রতিক কার্যক্রম</h5>
+                <p class="text-muted">শীঘ্রই আসছে...</p>
+            </div>
+        </div>
+    </div>
+</div>

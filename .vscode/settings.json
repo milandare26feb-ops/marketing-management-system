@@ -23,5 +23,9 @@
         "appwrite",
         "kawsar",
         "hossain"
-    ]
+    ],
+    "appwrite.projects": [
+
+    ],
+    "appwrite.activeProjectId": "690911f10028fa64956b"
 }

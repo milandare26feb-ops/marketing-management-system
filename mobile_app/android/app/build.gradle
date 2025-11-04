@@ -39,7 +39,7 @@ android {
 
     defaultConfig {
         applicationId = "com.confidencefeed.markettrack"
-        minSdk = 21  // Required for Mapbox Maps Flutter
+        minSdkVersion = flutter.minSdkVersion  // Required for Mapbox Maps Flutter
         targetSdk = flutter.targetSdkVersion ?: 34
         versionCode = flutterVersionCode.toInteger()
         versionName = flutterVersionName
